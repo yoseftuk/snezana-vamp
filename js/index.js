@@ -1,8 +1,8 @@
 const IMG_URL = 'media/profile-regular.jpg';
 const IMG_V_URL = 'media/profile-vampire-2.jpg';
-const RADIUS = 240;
-const RADIUS_OVER_1 = 24;
-const RADIUS_OVER_2 = 14;
+const RADIUS = .22;
+const RADIUS_OVER_1 = .031;
+const RADIUS_OVER_2 = .022;
 const canvas = document.querySelector('#profile');
 const ctx = canvas.getContext('2d');
 const freq1 = {
@@ -78,11 +78,11 @@ function frame(lastTimestamp = new Date().getTime()) {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
     const d = (deg) => {
-        return RADIUS + Math.sin((deg+freq1.shift)*freq1.value)*RADIUS_OVER_1+Math.cos((deg+freq2.shift)*freq2.value)*RADIUS_OVER_2;
+        return ch(RADIUS) + Math.sin((deg+freq1.shift)*freq1.value)*ch(RADIUS_OVER_1)+Math.cos((deg+freq2.shift)*freq2.value)*ch(RADIUS_OVER_2);
     };
     const deg = (dx, dy) => Math.atan2(dy-totalR, dx-totalR) + Math.PI;
     ctx.drawImage(img, 0,0, cw(), ch());
-    const totalR = RADIUS+RADIUS_OVER_1+RADIUS_OVER_2;
+    const totalR = Math.round(ch(RADIUS+RADIUS_OVER_1+RADIUS_OVER_2));
     const imageData = ctx.getImageData(x-totalR,y-totalR,totalR*2,totalR*2);
     const data = imageData.data;
     for(let i=0;i<data.length;i+=4) {
