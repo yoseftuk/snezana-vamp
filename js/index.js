@@ -91,8 +91,8 @@ function frame(lastTimestamp = new Date().getTime()) {
     // ctx.putImageData(imageData, x-totalR, y-totalR);
     ctx.beginPath();
     ctx.moveTo(x+d(0), y);
-    for (let i=0;i<360;i++) {
-        const θ = i/180*Math.PI;
+    for (let i=0;i<totalR*2*Math.PI;i++) {
+        const θ = i/totalR;
         const r = d(θ);
         ctx.lineTo(x+r*Math.cos(θ), y+r*Math.sin(θ));
     }
