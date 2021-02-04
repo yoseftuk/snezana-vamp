@@ -69,7 +69,7 @@ function handleResize() {
     initVampImg();
 }
 function handleMove({offsetX,offsetY}) {x = offsetX;y = offsetY;}
-function frame() {
+function frame(lastTimestamp = new Date().getTime()) {
     if(!play) {
         return ctx.drawImage(img,0,0,cw(),ch());
     }
@@ -99,11 +99,15 @@ function frame() {
         }
     }
     ctx.putImageData(imageData, x-totalR, y-totalR);
-    freq1.shift+=.02;
-    freq2.shift-=.01;
-    requestAnimationFrame(frame);
+    const currentTimestamp = new Date().getTime();
+    const dt = (currentTimestamp-lastTimestamp)/5000;
+    freq1.shift+=dt*2;
+    freq2.shift-=dt;
+
+    requestAnimationFrame(()=>frame(currentTimestamp));
 }
 imgV.src=IMG_V_URL;
 img.src=IMG_URL;
 handleResize();
+lastTimestamp=new Date().getTime();
 frame();
