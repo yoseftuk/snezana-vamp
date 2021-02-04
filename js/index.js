@@ -50,8 +50,6 @@ function initCanvas() {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
     ctx.drawImage(img, 0, 0, cw(), ch());
-    x = cw(.5);
-    y = ch(.5);
 }
 function initImg(){
     ctx.drawImage(img, 0, 0, cw(), ch());
@@ -75,8 +73,8 @@ function frame() {
     if(!play) {
         return ctx.drawImage(img,0,0,cw(),ch());
     }
-    if(regularImgData?.length !== ch()*cw()*4) initImg();
-    if(vampireImgData?.length !== ch()*cw()*4) initVampImg();
+    if(regularImgData?.length !== ch()*cw()*4) {console.log('r',regularImgData?.length, ch()*cw()*4);initImg()}
+    if(vampireImgData?.length !== ch()*cw()*4) {console.log('v',vampireImgData?.length, ch()*cw()*4);initVampImg()}
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
     const d = (deg) => {
