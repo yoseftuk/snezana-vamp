@@ -89,9 +89,9 @@ function frame() {
         const {dx, dy} = getXY(i, totalR*2);
         const idx = ((y-totalR+dy)*cw() + x-totalR+dx)*4;
         if(distance(totalR, totalR, dx, dy) > d(deg(dx, dy, totalR))) {
-            data[i] = regularImgData[idx];
-            data[i+1] = regularImgData[idx+1];
-            data[i+2] = regularImgData[idx+2];
+            // data[i] = regularImgData[idx];
+            // data[i+1] = regularImgData[idx+1];
+            // data[i+2] = regularImgData[idx+2];
         } else {
             data[i] = vampireImgData[idx];
             data[i+1] = vampireImgData[idx+1];
@@ -103,7 +103,7 @@ function frame() {
     freq2.shift-=.01;
     requestAnimationFrame(frame);
 }
-initCanvas();
 imgV.src=IMG_V_URL;
 img.src=IMG_URL;
+handleResize();
 frame();
