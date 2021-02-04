@@ -26,8 +26,6 @@ let imgV = new Image();
 let x = 0, y = 0;
 img.onload = initImg;
 imgV.onload = initVampImg;
-imgV.src=IMG_V_URL;
-img.src=IMG_URL;
 const cw = (percent=1) => canvas.width*percent;
 const ch = (percent=1) => canvas.height*percent;
 const distance = (x,y, x2, y2) => Math.sqrt((x-x2)**2+(y-y2)**2);
@@ -104,5 +102,6 @@ function frame() {
     requestAnimationFrame(frame);
 }
 initCanvas();
+imgV.src=IMG_V_URL;
+img.src=IMG_URL;
 frame();
-
