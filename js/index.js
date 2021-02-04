@@ -75,6 +75,8 @@ function frame() {
     if(!play) {
         return ctx.drawImage(img,0,0,cw(),ch());
     }
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
     const d = (deg) => {
         return RADIUS + Math.sin((deg+freq1.shift)*freq1.value)*RADIUS_OVER_1+Math.cos((deg+freq2.shift)*freq2.value)*RADIUS_OVER_2;
     };
