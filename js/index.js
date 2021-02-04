@@ -75,6 +75,8 @@ function frame() {
     if(!play) {
         return ctx.drawImage(img,0,0,cw(),ch());
     }
+    if(!regularImgData?.length) initImg();
+    if(!vampireImgData?.length) initVampImg();
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
     const d = (deg) => {
