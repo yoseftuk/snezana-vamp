@@ -26,8 +26,8 @@ let imgV = new Image();
 let x = 0, y = 0;
 img.onload = initImg;
 imgV.onload = initVampImg;
-const cw = (percent=1) => canvas.width*percent;
-const ch = (percent=1) => canvas.height*percent;
+const cw = (percent=1) => canvas.offsetWidth*percent;
+const ch = (percent=1) => canvas.offsetHeight*percent;
 const distance = (x,y, x2, y2) => Math.sqrt((x-x2)**2+(y-y2)**2);
 const getXY = (i,w) => ({dy: ((i/4)/w)|0, dx: (i/4)%w});
 let play = false;
@@ -75,8 +75,8 @@ function frame() {
     if(!play) {
         return ctx.drawImage(img,0,0,cw(),ch());
     }
-    if(!regularImgData?.length) initImg();
-    if(!vampireImgData?.length) initVampImg();
+    if(regularImgData?.length !== ch()*cw()*4) initImg();
+    if(vampireImgData?.length !== ch()*cw()*4) initVampImg();
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
     const d = (deg) => {
