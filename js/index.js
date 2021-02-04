@@ -109,5 +109,3 @@ function frame(lastTimestamp = new Date().getTime()) {
 imgV.src=IMG_V_URL;
 img.src=IMG_URL;
 handleResize();
-lastTimestamp=new Date().getTime();
-frame();
